@@ -11,13 +11,13 @@ jobs:
         uses: 1466587594/get-current-time@v2
         id: action_time
         with:
-          format: YYYY_MM_DD
+          format: YYYY-MM-DD HH:MM:SS Z
           utcOffset: "-08:00"
       - name: make own time
         id: bash_time
         run: |
-          echo "::set-output formattedTime=$(TZ=PST8 date +%Y_%m_%d)"
+          echo "::set-output formattedTime=$(TZ=UTC+8 date +%Y-%m-%d %H:%M:%S %z)"
       - name: echo action time
         run: |
           echo ${{ steps.action_time.outputs.formattedTime }}
-          echo ${{ steps.custom_time.outputs.formattedTime }}
+          echo ${{ steps.bash_time.outputs.formattedTime }}
