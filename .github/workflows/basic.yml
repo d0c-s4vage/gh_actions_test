@@ -19,5 +19,5 @@ jobs:
           echo "::set-output formattedTime=$(TZ=UTC+8 date +%Y-%m-%d %H:%M:%S %z)"
       - name: echo action time
         run: |
-          echo ${{ steps.action_time.outputs.formattedTime }}
-          echo ${{ steps.bash_time.outputs.formattedTime }}
+          echo "ACTION TIME: ${{ steps.action_time.outputs.formattedTime }}"
+          echo "  BASH TIME: ${{ steps.bash_time.outputs.formattedTime }}"
