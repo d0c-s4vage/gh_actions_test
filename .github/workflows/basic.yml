@@ -1,0 +1,23 @@
+name: Testing
+on:
+  - push
+
+
+jobs:
+  main_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get current time
+        uses: 1466587594/get-current-time@v2
+        id: action_time
+        with:
+          format: YYYY_MM_DD
+          utcOffset: "-08:00"
+      - name: make own time
+        id: bash_time
+        run: |
+          echo "::set-output formattedTime=$(TZ=PST8 date +%Y_%m_%d)"
+      - name: echo action time
+        run: |
+          echo ${{ steps.action_time.outputs.formattedTime }}
+          echo ${{ steps.custom_time.outputs.formattedTime }}
