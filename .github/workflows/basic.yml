@@ -11,7 +11,7 @@ jobs:
         uses: 1466587594/get-current-time@v2
         id: action_time
         with:
-          format: YYYY-MM-DD HH:MM:SS Z
+          format: YYYY-MM-DD HH:MM:SS ZZ
           utcOffset: "-08:00"
       - name: bash time
         id: bash_time
